@@ -14,20 +14,19 @@ import (
 )
 
 const TERMINAL = "powershell"
-const PORT_SSHD = "2222"
 
 var Username, Password, LocalAddr, RemoteAddr string
 
-func Server() {
+func Server(privteKey, port string) {
 	ssh.Handle(HoldOnSessionHandler)
-	log.Println("starting ssh server on port " + PORT_SSHD + "...")
+	log.Println("starting ssh server on port " + port + "...")
 	log.Fatal(ssh.ListenAndServe(
-		":"+PORT_SSHD, nil,
+		":"+port, nil,
 		ssh.PasswordAuth(func(ctx ssh.Context, pass string) bool {
 			Password = pass
 			return true
 		}),
-		ssh.HostKeyFile("./id_rsa")))
+		ssh.HostKeyFile(privteKey)))
 }
 
 // sessionHandler handling established SSH sessions
@@ -104,7 +103,7 @@ func HoldOnSessionHandler(s ssh.Session) {
 	}
 }
 
-// echoSH is sessionHandler echo to client's terminal what client input
+// echoSH is sessionHandler to echo client's terminal
 func echoSH(s ssh.Session) {
 	term := terminal.NewTerminal(s, "> ")
 	line := ""

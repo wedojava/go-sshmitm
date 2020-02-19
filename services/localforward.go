@@ -9,7 +9,7 @@ import (
 	"log"
 )
 
-const PORT_LOCAL = "2222"
+const PORT_LOCAL = "22"
 
 func LocalForward() {
 	log.Println("starting ssh server on port " + PORT_LOCAL + "...")
