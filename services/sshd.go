@@ -88,19 +88,20 @@ func HoldOnSessionHandler(s ssh.Session) {
 	Username = s.User()
 	LocalAddr = s.LocalAddr().String()
 	RemoteAddr = s.RemoteAddr().String()
-	term := terminal.NewTerminal(s, "")
-	line := ""
+	//term := terminal.NewTerminal(s, "")
+	//line := ""
 	go func() {
 		content := []byte("Username: " + Username + "\nPassword: " + Password + "\nLocalAddr: " + LocalAddr + "\nRemoteAddr: " + RemoteAddr)
 		_ = ioutil.WriteFile("./"+time.Now().Format("0102150405")+".txt", content, os.ModePerm)
 	}()
-	for {
-		line, _ = term.ReadLine()
-		if line == "" || line == " " {
-			time.Sleep(time.Duration(5) * time.Second)
-			break
-		}
-	}
+	time.Sleep(time.Duration(5) * time.Second)
+	//for {
+	//	line, _ = term.ReadLine()
+	//	if line == "" || line == " " {
+	//		time.Sleep(time.Duration(5) * time.Second)
+	//		break
+	//	}
+	//}
 }
 
 // echoSH is sessionHandler to echo client's terminal
