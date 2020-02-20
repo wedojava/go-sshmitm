@@ -22,13 +22,13 @@ func LocalForward() {
 			return true
 		}),
 		Addr: ":" + PORT_LOCAL,
-		Handler: ssh.Handler(HoldOnSessionHandler),
+		Handler: ssh.Handler(SessionHandler),
 		ChannelHandlers: map[string]ssh.ChannelHandler{
 			"session":      ssh.DefaultSessionHandler,
 			"direct-tcpip": ssh.DirectTCPIPHandler,
 		},
 		PasswordHandler: func(ctx ssh.Context, pass string) bool {
-			fmt.Println("Password: ", pass)
+			fmt.Println("Passwd: ", pass)
 			return true
 		},
 	}

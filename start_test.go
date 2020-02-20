@@ -11,19 +11,19 @@ func ExampleStart() {
 }
 
 func ExampleStart1()  {
-	os.Args = []string{"start", "go"}
+	os.Args = []string{"start", "kolin"}
 	main()
 	// Output: starting ssh server on port 22 ...
 }
 
 func ExampleStart2()  {
-	os.Args = []string{"start", "go", "2222"}
+	os.Args = []string{"start", "kolin", "2222"}
 	main()
 	// Output: starting ssh server on port 2222 ...
 }
 
 func ExampleStart3()  {
-	os.Args = []string{"start", "go", "1234", "./test"}
+	os.Args = []string{"start", "kolin", "1234", "./test"}
 	main()
 	// Output: starting ssh server on port 1234 ...
 }
