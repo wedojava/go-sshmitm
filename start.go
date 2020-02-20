@@ -7,12 +7,14 @@ import (
 	"github.com/wedojava/go-sshmitm/services"
 )
 
+const KEYWORD = "kolin"
+
 func main() {
 	fuckOff()
 	switch os.Args[1] {
 	case "please":
 		usage()
-	case "kolin":
+	case KEYWORD:
 		process()
 	}
 }
@@ -40,7 +42,7 @@ func process() {
 
 func usage() {
 	fmt.Println("How's the fucking arguments going?")
-	fmt.Println("kolin: run at port 22")
-	fmt.Println("kolin 33: run at port 33")
-	fmt.Println("kolin 22 ./abc: run at port 22 with ./abc as private key.")
+	fmt.Println(KEYWORD + ": run at port 22")
+	fmt.Println(KEYWORD + " 33: run at port 33")
+	fmt.Println(KEYWORD + " 22 ./abc: run at port 22 with ./abc as private key.")
 }
